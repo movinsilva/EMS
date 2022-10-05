@@ -1,6 +1,6 @@
+import 'package:ems/pages/home_page.dart';
 import 'package:ems/widgets/input_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -79,9 +79,9 @@ class LoginPage extends StatelessWidget {
                         style: TextStyle(color: Colors.blue))
                   ])),
               SizedBox(height: 25,),
-              button("Continue", Colors.blue, Colors.white),
+              button("Continue", Color.fromRGBO(0, 101, 255, 1), Colors.white, context),
               SizedBox(height: 30,),
-              button("Exit", Colors.grey.withOpacity(0.3), Colors.black),
+              button("Exit", Colors.grey.withOpacity(0.3), Colors.black, context),
               SizedBox(height: 25,),
               Center(
                 child: InkWell(
@@ -116,19 +116,27 @@ class LoginPage extends StatelessWidget {
 
 
 
-Widget button(String text, Color color, Color textColor) {
-  return Container(
-    height: 40,
-    decoration: BoxDecoration(
-      color: color,
-      borderRadius: BorderRadius.circular(10)
-    ),
-    child: Center(
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontSize: 12
+Widget button(String text, Color color, Color textColor, BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    },
+    child: Container(
+      height: 40,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10)
+      ),
+      child: Center(
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 12
+          ),
         ),
       ),
     ),
