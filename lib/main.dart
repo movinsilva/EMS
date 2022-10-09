@@ -1,4 +1,5 @@
 import 'package:ems/pages/home_page.dart';
+import 'package:ems/pages/survey_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Google-inter',
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: SurveyPage(),
     );
   }
 }
