@@ -1,4 +1,5 @@
 import 'package:ems/pages/outlet_page.dart';
+import 'package:ems/pages/survey_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
     {"name": "Expense claims", "path": "assets/money.png"},
     {"name": "Tasks", "path": "assets/task.png"},
     {"name": "Reminder", "path": "assets/bell.png"},
-  ];
+    {"name": "Survey", "path": "assets/bell.png"},  ];
 
   @override
   Widget build(BuildContext context) {
@@ -132,7 +133,7 @@ class HomePage extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            SizedBox(height: 10,),
+            const SizedBox(height: 10,),
             Container(
               margin: const EdgeInsets.only(left: 20),
               child: const Text(
@@ -227,7 +228,7 @@ class HomePage extends StatelessWidget {
               height: 35,
             ),
             Expanded(
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -241,13 +242,21 @@ class HomePage extends StatelessWidget {
                       return Container(
                         padding: const EdgeInsets.only(left: 2, right: 2),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             InkWell(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => OutletPage()),
-                                );
+                                if (item["name"] == "Survey") {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const SurveyPage()),
+                                  );
+                                } else {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const OutletPage()),
+                                  );
+                                }
                               },
                               child: Container(
                                 width: size.width * 0.2,
@@ -264,7 +273,7 @@ class HomePage extends StatelessWidget {
                                           blurRadius: 8)
                                     ]),
                                 child:
-                                    Center(child: Image.asset(item["path"]!)),
+                                    Center(child: Image.asset(item["path"]!, height: 25)),
                               ),
                             ),
                             const SizedBox(
@@ -273,7 +282,8 @@ class HomePage extends StatelessWidget {
                             Text(
                               item["name"]!,
                               style:
-                                  const TextStyle(fontWeight: FontWeight.w500),
+                                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 10),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),

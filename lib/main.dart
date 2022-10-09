@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Google-inter',
         primarySwatch: Colors.blue,
       ),
-      home: SurveyPage(),
+      home: const LoginPage(),
     );
   }
 }

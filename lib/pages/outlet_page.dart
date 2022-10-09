@@ -7,13 +7,33 @@ class OutletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          iconTheme: const IconThemeData(color: Colors.black),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              Text(
+                "Welcome, Sandev",
+                style: TextStyle(
+                    fontSize: 11,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600),
+              ),
+              Text(
+                "Search Outlet",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 27),
+              ),
+            ],
+          )),
       body: Container(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
-            const SizedBox(
-              height: 100,
-            ),
             Row(
               children: [
                 Expanded(
